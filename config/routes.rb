@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
+  get 'edit/show'
+  get 'hidden', to: 'hidden#show'
+  get 'update_profile', to: 'edit#update'
   resources :posts
   get 'about', to: 'pages#about'
+  get 'logout', to:'sessions#destroy'
+  get 'login', to: 'sessions#new'
+  get 'edit_password', to: 'user#edit_password'
+
+  resources :sessions
+  resources :users do
+
+  end
 
   root 'pages#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

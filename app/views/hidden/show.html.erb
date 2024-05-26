@@ -1,0 +1,24 @@
+<h1>Simple Calculator </h1>
+<p>For the most basic operations. </p>
+
+<%= form_with url: hidden_path, method: :get, local: true, :authenticity_token => false, skip_enforcing_utf8: true do |form| %>
+  <div class="field">
+    <%= form.label :number1 %>
+    <%= form.number_field :number1 %>
+  </div>
+  <div class="field">
+    <%= form.label :number2 %>
+    <%= form.number_field :number2 %>
+  </div>
+  <div class="field">
+    <%= form.label :expression %>
+     <%= form.select :expression, options_for_select([['+', '+'], ['-', '-'], ['*', '*'], ['/', '/']]) %>
+  </div>
+  <div class="actions">
+    <%= form.hidden_field :id, value: cookies[:user_id]%>
+    <%= form.submit "Calculate" %>
+    <%#= link_to 'Update Name', update_name_path(id: cookies[:user_id], name: @user.name), method: :get, data: { turbo: false } %>
+  </div>
+<% end %>
+
+<%= eval("#{@result}") %>

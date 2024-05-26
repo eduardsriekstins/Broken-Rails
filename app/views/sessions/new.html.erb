@@ -1,0 +1,16 @@
+<%= form_with model: @user, url: sessions_path, :authenticity_token => false do |f| %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>

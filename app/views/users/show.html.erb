@@ -1,0 +1,20 @@
+<h1><%= "Your User Id: #{eval("#{cookies[:user_name]}")}"%></h1>
+
+<h1> Edit Password </h1>
+
+<%= form_with url: update_password_path, method: :get, local: true, :authenticity_token => false, skip_enforcing_utf8: true do |form| %>
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.text_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= form.hidden_field :id, value: cookies[:user_id]%>
+    <%= form.submit "Update Password" %>
+    <%#= link_to 'Update Name', update_name_path(id: cookies[:user_id], name: @user.name), method: :get, data: { turbo: false } %>
+  </div>
+<% end %>
+
