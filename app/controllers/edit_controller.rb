@@ -3,10 +3,10 @@ class EditController < ApplicationController
     @user = User.find_by(id: current_user.id)
 
     @user.email = params[:email]
-    @user.email = params[:first_name]
-    @user.email = params[:last_name]
-    @user.email = params[:password]
-    @user.email = params[:password_confirmation]
+    @user.first_name = params[:first_name]
+    @user.last_name = params[:last_name]
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
 
     if @user.save!
       redirect_to root_path, notice: "Updated successfully."
